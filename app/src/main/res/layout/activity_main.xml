@@ -33,7 +33,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
-        android:text="player1"
         android:textColor="#053742"
         android:textSize="72sp"
         app:layout_constraintBottom_toTopOf="@+id/gridLayout"
