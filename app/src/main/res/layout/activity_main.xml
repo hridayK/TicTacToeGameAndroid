@@ -60,6 +60,7 @@
             android:layout_height="110sp"
             android:textAlignment="center"
             android:textSize="54sp"
+            android:onClick="click00"
             />
         <Button
             android:id="@+id/b01"
@@ -71,6 +72,7 @@
             android:layout_height="110sp"
             android:textAlignment="center"
             android:textSize="54sp"
+            android:onClick="click01"
             />
         <Button
             android:id="@+id/b02"
@@ -82,6 +84,7 @@
             android:layout_height="110sp"
             android:textAlignment="center"
             android:textSize="54sp"
+            android:onClick="click02"
             />
         <Button
             android:id="@+id/b10"
@@ -93,6 +96,7 @@
             android:layout_height="110sp"
             android:textAlignment="center"
             android:textSize="54sp"
+            android:onClick="click10"
             />
         <Button
             android:id="@+id/b11"
@@ -104,6 +108,7 @@
             android:layout_height="110sp"
             android:textAlignment="center"
             android:textSize="54sp"
+            android:onClick="click11"
             />
         <Button
             android:id="@+id/b12"
@@ -115,6 +120,7 @@
             android:layout_height="110sp"
             android:textAlignment="center"
             android:textSize="54sp"
+            android:onClick="click12"
             />
         <Button
             android:id="@+id/b20"
@@ -126,6 +132,7 @@
             android:layout_height="110sp"
             android:textAlignment="center"
             android:textSize="54sp"
+            android:onClick="click20"
             />
         <Button
             android:id="@+id/b21"
@@ -137,6 +144,7 @@
             android:layout_height="110sp"
             android:textAlignment="center"
             android:textSize="54sp"
+            android:onClick="click21"
             />
         <Button
             android:id="@+id/b22"
@@ -148,6 +156,7 @@
             android:layout_height="110sp"
             android:textAlignment="center"
             android:textSize="54sp"
+            android:onClick="click22"
             />
     </GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
