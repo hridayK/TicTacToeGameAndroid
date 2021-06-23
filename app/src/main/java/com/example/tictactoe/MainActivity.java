@@ -3,27 +3,32 @@ package com.example.tictactoe;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView winnerBoard;
+
     //shows the which player's turn is it
-    public TextView pturn;
+    private TextView pturn;
+
 
     //used for deciding whose turn is it
-    public int count=0;
+    private int count=0;
 
     //I used to call it X and Zero before the internet xD
-    public final String ex = "X";
-    public final String zero = "O";
+    private final String ex = "X";
+    private final String zero = "O";
 
     //all the buttons
     public Button fields[] = new Button[9];
 
     //ids of all the buttons that get assigned when compiler goes to onCreate()
-    public final int IDS[] = {
+    private final int IDS[] = {
             R.id.b00,
             R.id.b01,
             R.id.b02,
@@ -35,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
             R.id.b22
     };
 
+    Logic lg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +52,10 @@ public class MainActivity extends AppCompatActivity {
             index++;
         }
         pturn = (TextView) findViewById(R.id.textView2);
+        winnerBoard = (TextView) findViewById(R.id.textView);
         pturn.setText("Player 1");
+
+        lg = new Logic();
     }
 
     public void click00(View view) {
@@ -59,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
         }
         count++;
         fields[0].setClickable(false);
+        if(lg.check(fields)==true)
+            displayWinner();
     }
 
     public void click01(View view) {
@@ -72,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
         }
         count++;
         fields[1].setClickable(false);
+        if(lg.check(fields)==true)
+            displayWinner();
     }
 
     public void click02(View view) {
@@ -85,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
         }
         count++;
         fields[2].setClickable(false);
+        if(lg.check(fields)==true)
+            displayWinner();
     }
 
     public void click10(View view) {
@@ -98,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
         }
         count++;
         fields[3].setClickable(false);
+        if(lg.check(fields)==true)
+            displayWinner();
     }
 
     public void click11(View view) {
@@ -111,6 +129,8 @@ public class MainActivity extends AppCompatActivity {
         }
         count++;
         fields[4].setClickable(false);
+        if(lg.check(fields)==true)
+            displayWinner();
     }
 
     public void click12(View view) {
@@ -124,6 +144,8 @@ public class MainActivity extends AppCompatActivity {
         }
         count++;
         fields[5].setClickable(false);
+        if(lg.check(fields)==true)
+            displayWinner();
     }
 
     public void click20(View view) {
@@ -137,6 +159,8 @@ public class MainActivity extends AppCompatActivity {
         }
         count++;
         fields[6].setClickable(false);
+        if(lg.check(fields)==true)
+            displayWinner();
     }
 
     public void click21(View view) {
@@ -150,6 +174,8 @@ public class MainActivity extends AppCompatActivity {
         }
         count++;
         fields[7].setClickable(false);
+        if(lg.check(fields)==true)
+            displayWinner();
     }
 
     public void click22(View view) {
@@ -163,5 +189,15 @@ public class MainActivity extends AppCompatActivity {
         }
         count++;
         fields[8].setClickable(false);
+        if(lg.check(fields)==true)
+            displayWinner();
+    }
+
+    public void displayWinner(){
+        if(pturn.getText().toString() == "Player 1")
+        winnerBoard.setText("Player 2"+" wins");
+        if(pturn.getText().toString() == "Player 2")
+            winnerBoard.setText("Player 1"+" wins");
+        pturn.setText("");
     }
 }
