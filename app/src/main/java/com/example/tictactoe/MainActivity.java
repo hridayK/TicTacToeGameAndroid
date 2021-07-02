@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
     //player one turn
     private boolean p1Turn = true;
 
-    //player1/2points
-    private int p1p;
-    private int p2p;
+    //player1/2 points
+    private int p1;
+    private int p2;
 
     //all the buttons
     private Button[][] btn = new Button[3][3];
@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         TvPlayer1 = (TextView) findViewById(R.id.player1);
         TvPlayer2 = (TextView) findViewById(R.id.player2);
+
+        p1=p2=0;
 
         for(int i=0;i<3;i++){
             for(int j=0;j<3;j++){
@@ -68,25 +70,38 @@ public class MainActivity extends AppCompatActivity {
         count++;
 
         if(CheckWin()){
-            if(!p1Turn)
+            if(!p1Turn){
                 p1wins();
-            else
+            }
+            else{
                 p2wins();
+            }
         }else if(count==9){
             Toast.makeText(this,"Draw",Toast.LENGTH_SHORT).show();
+            reset();
         }
-        
+
     }
 
     //player one wins
     private void p1wins(){
         Toast.makeText(this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+        String pts = TvPlayer1.getText().toString();
+        ++p1;
+        TvPlayer1.setText(pts.substring(0,pts.length()-1)+p1);
+        reset();
+
     }
 
     //player two wins
     private void p2wins(){
         Toast.makeText(this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+        String pts = TvPlayer2.getText().toString();
+        ++p2;
+        TvPlayer2.setText(pts.substring(0,pts.length()-1)+p2);
+        reset();
     }
+
 
     //check for the winner
     private boolean CheckWin() {
@@ -104,6 +119,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        for (int i = 0; i < 3; i++) {
+            if (text[0][i].equals(text[1][i]) && text[0][i].equals(text[2][i]) && !text[0][i].equals("")) {
+                return true;
+            }
+        }
+
         if(text[0][0].equals(text[1][1]) && text[0][0].equals(text[2][2]) && !text[0][0].equals("")){
             return true;
         }
@@ -111,6 +132,20 @@ public class MainActivity extends AppCompatActivity {
         if(text[0][2].equals(text[1][1]) && text[0][2].equals(text[2][0]) && !text[0][2].equals("")){
             return true;
         }
+
         return false;
+    }
+
+    public void reset(){
+        count=0;
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                btn[i][j].setText("");
+            }
+        }
+    }
+
+    public void reset(View view){
+        reset();
     }
 }
